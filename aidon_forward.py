@@ -19,7 +19,7 @@ hi = hass_influx(
 	hass_host=args.hass_host,
 	hass_token=args.hass_token)
 
-ser = serial.Serial(args.serial_port, 2400, timeout=0.05, parity=serial.PARITY_NONE)
+ser = serial.Serial(args.serial_port, 2400, timeout=0.05, parity=serial.PARITY_EVEN)
 
 def aidon_callback(fields):
 	ts = time.time()
@@ -33,6 +33,7 @@ def aidon_callback(fields):
 		hi.post_influx("voltage", "aidon_p3", "%.01f" % fields['ul3'], ts=ts)
 		hi.post_influx("current", "aidon_p1", "%.01f" % fields['il1'], ts=ts)
 		hi.post_influx("current", "aidon_p2", "%.01f" % fields['il2'], ts=ts)
+		hi.post_influx("current", "aidon_p3", "%.01f" % fields['il3'], ts=ts)
 
 	if 'energy_act_in' in fields:
 		hi.post("aidon", "energy", "%.02f" % fields['energy_act_in'], hass_name="Energi", hass_unit="kWh", ts=ts)
