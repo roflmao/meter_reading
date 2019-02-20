@@ -100,9 +100,10 @@ class aidon:
 			fields['p_react_out'] = data[6]
 			fields['il1'] = data[7] / 10.0
 			fields['il2'] = data[8] / 10.0
-			fields['ul1'] = data[9] / 10.0
-			fields['ul2'] = data[10] / 10.0
-			fields['ul3'] = data[11] / 10.0
+			fields['il3'] = data[9] / 10.0
+			fields['ul1'] = data[10] / 10.0
+			fields['ul2'] = data[11] / 10.0
+			fields['ul3'] = data[12] / 10.0
 
 			if (len(data) == OBJECTS_1HOUR):
 				fields['energy_act_in'] = data[13] / 100.0
