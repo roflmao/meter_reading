@@ -10,7 +10,7 @@ if len (sys.argv) != 2:
 def aidon_callback(fields):
 	print fields
 
-ser = serial.Serial(sys.argv[1], 2400, timeout=0.05, parity=serial.PARITY_NONE)
+ser = serial.Serial(sys.argv[1], 2400, timeout=0.05, parity=serial.PARITY_EVEN)
 a = aidon(aidon_callback)
 
 while(1):
