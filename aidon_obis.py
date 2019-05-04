@@ -18,7 +18,6 @@ OBJECTS_2P5SEC = 1
 #OBJECTS_10SEC = 12
 OBJECTS_10SEC = 13 # jostor: on my aidon meter this is 13
 OBJECTS_1HOUR = 17
-#OBJECTS_1HOUR = 18 # jostor: on my aidon meter this is 18
 
 # OBIS types
 TYPE_STRING = 0x0a
