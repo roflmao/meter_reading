@@ -1,0 +1,12 @@
+[Unit]
+Description=meter reading
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c '/usr/bin/python aidon_forward.py ${DEV} --hass_host ${HASS_HOST} --hass_token ${HASS_TOKEN}'
+PassEnvironment=HASS_TOKEN HASS_HOST DEV
+EnvironmentFile=/root/meter_reading/meter_reading.env
+WorkingDirectory=/root/meter_reading
+
+[Install]
+WantedBy=multi-user.target

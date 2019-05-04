@@ -1,3 +1,4 @@
 img/
 *.pyc
 start
+meter_reading.env
