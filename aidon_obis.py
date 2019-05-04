@@ -17,7 +17,7 @@ ESCAPED = 2
 OBJECTS_2P5SEC = 1
 #OBJECTS_10SEC = 12
 OBJECTS_10SEC = 13 # jostor: on my aidon meter this is 13
-OBJECTS_1HOUR = 17
+OBJECTS_1HOUR = 18
 #OBJECTS_1HOUR = 18 # jostor: on my aidon meter this is 18
 
 # OBIS types
@@ -106,10 +106,11 @@ class aidon:
 			fields['ul3'] = data[12] / 10.0
 
 			if (len(data) == OBJECTS_1HOUR):
-				fields['energy_act_in'] = data[13] / 100.0
-				fields['energy_act_out'] = data[14] / 100.0
-				fields['energy_react_in'] = data[15] / 100.0
-				fields['energy_react_out'] = data[16] / 100.0
+                                fields['time'] = data[13]
+				fields['energy_act_in'] = data[14] / 100.0
+				fields['energy_act_out'] = data[15] / 100.0
+				fields['energy_react_in'] = data[16] / 100.0
+				fields['energy_react_out'] = data[17] / 100.0
 
 		self.callback(fields)
 
