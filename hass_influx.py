@@ -8,9 +8,6 @@ class hass_influx:
 		self.hass_s = requests.Session()
 		self.hass_s.headers.update({'Authorization': 'Bearer %s' % hass_token})
 
-		self.influx_host = inf_host
-		self.influx_db = inf_db
-
 		self.print_post = print_post
 
 	def post_hass(self, hass_id, hass_name, str_value, unit):
@@ -34,17 +31,6 @@ class hass_influx:
 				print hass_id, hass_name, str_value, unit
 				print "Failed HASS: %s" % e
 
-	def post_influx(self, meas_type, name, value, ts=time.time()):
-		if self.influx_host and self.influx_db:
-			post_data = "%s,dev=%s value=%s %u" % \
-				(meas_type, name, value, ts*1000000000)	
-			status = requests.post(self.influx_host + '/write',
-				params={'db': self.influx_db}, 
-				data=post_data)
-			if self.print_post:
-				print post_data
-
 	def post(self, ident, type_, value, hass_name="", hass_unit="", ts=time.time()):
-		self.post_influx(type_, ident, value, ts)
 		if hass_name:
 			self.post_hass(ident + '_' + type_, hass_name, value, hass_unit)
